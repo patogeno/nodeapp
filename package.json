@@ -11,7 +11,13 @@
         "jade": "*",
         "nib": "*",
         "stylus": "*",
-        "morgan": "*"
+        "morgan": "*",
+        "mongodb": "*",
+        "monk": "*",
+        "body-parser" : "*",
+        "method-override" : "*",
+        "cookie-parser" : "*",
+        "express-session" : "*"
     },
     "repository": {
         "type": "git",

@@ -3,6 +3,16 @@ var express = require('express');
 var stylus = require('stylus');
 var nib = require('nib');
 var morgan = require('morgan');
+var routes = require('./routes');
+var user = require('./routes/user');
+var http = require('http');
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/nodeapp');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
 
 //Set port number
 var portnumber = 3000;
@@ -26,6 +36,10 @@ console.log('Jade has been initialised');
 
 //Stylus Middleware
 app.use(morgan('dev'));
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(cookieParser('mykey'));
+app.use(expressSession());
 app.use(stylus.middleware(
     {
         src: __dirname + '/public',
@@ -33,6 +47,11 @@ app.use(stylus.middleware(
     }
 ));
 app.use(express.static(__dirname + '/public'));
+
+app.get('/', routes.index);
+//app.get('/users', user.list);
+app.get('/userlist',routes.userlist(db));
+app.post('/adduser',routes.adduser(db));
 
 //Render Index Page
 app.get('/', function(req, res) {

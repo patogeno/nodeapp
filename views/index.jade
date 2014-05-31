@@ -1,15 +1,21 @@
 extend layout
 block content
-    h1 Welcome!
+  h1=title
+  p.
+   Welcome to the Node.js Demo Registration App. This demo app uses the following features/modules...
+  ul.featurelist
+    li.
+      Express Framework
+    li.
+      Jade Template Engine
+    li.
+      Stylus CSS Generator
+    li.
+      Nib
+    li.
+      MongoDB
+    li.
+      Monk
+  div.userlistlink
     p.
-        Some text dsads dsa dsa dsa dsa dsa dsa sda dsa asd d sa dsa
-    p.
-        other text fdsfwe  wer ew rew rew rwe rwe rwe fwe rew rew rwe erw erw rwe 
-block sidebar
-    .block
-        h1 Right Sidebar
-        p.
-            Additional text fds fds fds fds  ewrt we g fg sg r fdsfd 
-        br.
-        .readmore
-            a(href="http://example.com") Read More
+      To see all registered users, <a href="/userlist">click here</a>
